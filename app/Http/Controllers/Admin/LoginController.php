@@ -16,7 +16,7 @@ class LoginController
        
        
        if(auth()->guard('admin')->attempt($input)){
-           return"Login Success";
+           return redirect()->route('admin.dashboard');
        }else{
            return"Login Error";
        }
