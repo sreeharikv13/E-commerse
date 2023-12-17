@@ -10,4 +10,7 @@ class ProductController extends Controller
     public function list(){
         return view('admin.products.list');
     }
+    public function create(){
+        return view('admin.products.create');
+    }
 }

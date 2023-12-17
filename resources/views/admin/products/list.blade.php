@@ -25,6 +25,9 @@
         <div class="card">
           
           <!-- /.card-header -->
+          <div class="card-header">
+            <a href="{{route('admin.product.create')}}" class="btn btn-primary pull-right">Add Product</a>
+          </div>  
           <div class="card-body">
             <table class="table table-bordered">
               <thead>
