@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->double('price',15,2);
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->boolean('status')->comment('1:Active,0:Inactive')->default(1);
             $table->boolean('is_favorite')->comment('1:Yes,0:No')->default(0);
             $table->timestamps();
@@ -40,8 +40,7 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
-
         Schema::dropIfExists('products');
+        Schema::dropIfExists('categories');
     }
 }
