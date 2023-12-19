@@ -28,7 +28,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="{{route('admin.product.save')}}"method="post">
+                @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="">Name</label>
@@ -39,11 +40,12 @@
                     <input type="text" class="form-control" name="name" placeholder="price">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Category</label>
+                    <label for="">Category</label>
                     <select name="category_id" class="form-control">
-                      <option value=""></option>
-                      <option value=""></option>
-                      <option value=""></option>
+                      <option value="">Select an Option</option>
+                      @foreach ($categories as $category)
+                         <option value="{{$category->id}}">{{$category->name}}"</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group">
@@ -66,8 +68,8 @@
                   </div>
                   <div class="form-group">
                     <label for="">Is Favourite</label>
-                    <input type="radio" value="1" name="status"/>Yes
-                    <input type="radio" value="0" name="status"/>No
+                    <input type="radio" value="1" name="is_favorite"/>Yes
+                    <input type="radio" value="0" name="is_favorite"/>No
                   </div>
                 <!-- /.card-body -->
 

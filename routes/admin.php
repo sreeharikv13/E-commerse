@@ -23,6 +23,8 @@ Route::name('admin.')->group(function(){
     Route::name('product.')->prefix('admin/products')->group(function(){
        Route::get('/', [ProductController::class,'list'])->name('list');
        Route::get('create', [ProductController::class,'create'])->name('create');
+       Route::post('save', [ProductController::class,'save'])->name('save');
+
     });
 });
 
