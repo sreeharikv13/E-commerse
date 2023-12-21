@@ -25,7 +25,10 @@ class ProductSaveRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'price' =>['required']
+            'price' =>['required'],
+            'category_id'=>['nullable'],
+            'status'=>['nullable'],
+            'is_favorite'=>['nullable']
         ];
     }
 }
