@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use Illuminate\Http\Requests\ProductSaveRequest;
-
 use App\Http\Controllers\Controller;
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductSaveRequest;
 
 class ProductController extends Controller
 {
