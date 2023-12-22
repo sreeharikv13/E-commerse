@@ -46,8 +46,8 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $product->name }}</td>
                   <td>{{ $product->price }}</td>
-                  <td>{{ $product->status }}</td>
-                  <td>{{ $product->is_favorite }}</td>
+                  <td>@if ($product->status ==1) Active @else Inactive @endif</td>
+                  <td>@if ($product->is_favorite==1)Yes @else NO @endif</td>
                   <td>
 
                      <a href="" class="btn btn-primary btn-sm">Edit</a>
