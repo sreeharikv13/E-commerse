@@ -27,6 +27,7 @@
           <!-- /.card-header -->
           <div class="card-header">
             <a href="{{route('admin.product.create')}}" class="btn btn-primary pull-right">Add Product</a>
+            @if (session()->has('message'))<p class="flashMessage">{{session()->get('message')}}</p> @endif
           </div>  
           <div class="card-body">
             <table class="table table-bordered">
@@ -51,7 +52,7 @@
                   <td>
 
                      <a href="" class="btn btn-primary btn-sm">Edit</a>
-                     <a href="" class="btn btn-danger btn-sm">Delete</a>
+                     <a href="{{route('admin.product.delete',encrypt($product->id))}}" class="btn btn-danger btn-sm">Delete</a>
 
                   </td>
                 </tr>
@@ -61,13 +62,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer clearfix">
-            {{-- <ul class="pagination pagination-sm m-0 float-right">
-              <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-            </ul> --}}
+            {{ $products->links() }}
           </div>
         </div>
         <!-- /.card -->
