@@ -31,6 +31,17 @@ class ProductController extends Controller
         Product::create($input);
         return redirect()->route('admin.product.list')-with('message','Product saved successfully');
     }
+     
+    public function edit($id){
+        $product = Product::find(decrypt($id));
+        $categories = Category::all();
+        return view('admin.products.edit',compact('product','categories'));
+    }
+
+    public function update($id){
+        
+    }
+
     public function delete($id){
     $product = product::find(decrypt($id));
     if(!empty($product->image)){

@@ -24,6 +24,8 @@ Route::name('admin.')->group(function(){
        Route::get('/', [ProductController::class,'list'])->name('list');
        Route::get('create', [ProductController::class,'create'])->name('create');
        Route::post('save', [ProductController::class,'save'])->name('save');
+       Route::get('edit/{id}', [ProductController::class,'edit'])->name('edit');
+       Route::post('update', [ProductController::class,'update'])->name('update');
        Route::get('delete/{id}', [ProductController::class,'delete'])->name('delete');
     });
 });

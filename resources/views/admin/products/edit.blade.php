@@ -8,7 +8,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add Product</li>
+              <li class="breadcrumb-item active">Edit Product</li>
             </ol>
           </div>
         </div>
@@ -24,27 +24,28 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Add Product</h3>
+                <h3 class="card-title">Edit Product</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('admin.product.save')}}"method="post" enctype="multipart/form-data">
+              <form action="{{route('admin.product.update')}}"method="post" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="product_id" value="{{encrypt($product->id)}}">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="">Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                    <input type="text" class="form-control" name="name" value="{{ $product->name}}" placeholder="Enter Name">
                   </div>
                   <div class="form-group">
                     <label for="">price</label>
-                    <input type="text" class="form-control" name="price" placeholder="price">
+                    <input type="text" class="form-control" name="price" value="{{ $product->price}}" placeholder="price">
                   </div>
                   <div class="form-group">
                     <label for="">Category</label>
                     <select name="category_id" class="form-control">
                       <option value="">Select an Option</option>
                       @foreach ($categories as $category)
-                         <option value="{{$category->id}}">{{$category->name}}"</option>
+                         <option {{ $category->id == $product->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -74,7 +75,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
             </div>

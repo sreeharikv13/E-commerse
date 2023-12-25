@@ -34,6 +34,7 @@
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
+                  <th>Image</th>
                   <th>Name</th>
                   <th>Price</th>
                   <th>Status</th>
@@ -45,13 +46,14 @@
                 @foreach ($products as $product )
                 <tr>
                   <td>{{ $loop->iteration }}</td>
+                  <td><img src="{{ asset("images/".$product->image)}}" width="100" alt=""></td>
                   <td>{{ $product->name }}</td>
                   <td>{{ $product->price }}</td>
                   <td>@if ($product->status ==1) Active @else Inactive @endif</td>
                   <td>@if ($product->is_favorite==1)Yes @else NO @endif</td>
                   <td>
 
-                     <a href="" class="btn btn-primary btn-sm">Edit</a>
+                     <a href="{{ route('admin.product.edit',encrypt($product->id))}}" class="btn btn-primary btn-sm">Edit</a>
                      <a href="{{route('admin.product.delete',encrypt($product->id))}}" class="btn btn-danger btn-sm">Delete</a>
 
                   </td>
