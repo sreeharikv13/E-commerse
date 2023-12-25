@@ -26,8 +26,9 @@ class ProductController extends Controller
             $extention = $request->image->extension();
             $filename = Str::random(6)."_".time()."_product.".$extention;
             $request->image->storeAs('images',$filename);
+            $input['image'] = $filename;
+
         }
-        $input['image'] = $filename;
         Product::create($input);
         return redirect()->route('admin.product.list')-with('message','Product saved successfully');
     }
@@ -38,8 +39,17 @@ class ProductController extends Controller
         return view('admin.products.edit',compact('product','categories'));
     }
 
-    public function update($id){
-        
+    public function update(ProductSaveRequest $request){
+        $input = $request->validated();
+        $product = Product::find(decrypt($request->Product_id));
+        if($request->hasFile('image')){
+            Storage::delete('images/'.$product->images);
+
+            $extention = $request->image->extenstion();
+            $filename = Str::random(6)."_".time()."_product.".$extention;
+            $request->image->storeAs('images',$filename);
+            $input['image'] = $filename;
+        }
     }
 
     public function delete($id){

@@ -56,21 +56,22 @@
                         <input type="file" class="custom-file-input" name="image" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
-                      {{-- <div class="input-group-append">
+                      <div class="input-group-append">
                         <span class="input-group-text">Upload</span>
-                      </div> --}}
+                      </div>
                     </div>
+                    <img src="{{ asset('images/'.$product->image)}}" width="100" alt="">
                   </div>
 
                   <div class="form-group">
                     <label for="">Status</label>
-                    <input type="radio" value="1" name="status"/>Active
-                    <input type="radio" value="0" name="status"/>Inactive    
+                    <input type="radio" {{ $product->status == '1' ? 'checked' : '' }} value="1" name="status"/>Active
+                    <input type="radio" {{ $product->status == '0' ? 'checked' : '' }} value="0" name="status"/>Inactive    
                   </div>
                   <div class="form-group">
                     <label for="">Is Favourite</label>
-                    <input type="radio" value="1" name="is_favorite"/>Yes
-                    <input type="radio" value="0" name="is_favorite"/>No
+                    <input type="radio" {{ $product->status == '1' ? 'checked' : '' }} value="1" name="is_favorite"/>Yes
+                    <input type="radio" {{ $product->status == '0' ? 'checked' : '' }} value="0" name="is_favorite"/>No
                   </div>
                 <!-- /.card-body -->
 
